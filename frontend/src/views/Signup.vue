@@ -77,36 +77,51 @@ export default {
 
       /*Enregistrement d'un nouvel utilisateur*/
         signup() {
-            this.inputSignup.imageUrl = "http://localhost:3000/images/picture_default.jpg"
+            
+          if (this.inputSignup.firstname == null || this.inputSignup.lastname == null || this.inputSignup.email == null || this.inputSignup.password == null || 
+          this.inputSignup.firstname.lenght == '0' || this.inputSignup.lastname.lenght == '0' || this.inputSignup.email.lenght == '0' || this.inputSignup.password.lenght == '0' ||
+          this.inputSignup.firstname.trim() == '' || this.inputSignup.lastname.trim() == '' || this.inputSignup.email.trim() == '' || this.inputSignup.password.trim() == '')
+          {
+                alert("Veuillez renseigner tous les champs du formulaire !")
+          } 
+          else
+          {         
 
-            let inputDatas = {
-                "lastname": this.inputSignup.lastname,
-                "firstname": this.inputSignup.firstname,
-                "email": this.inputSignup.email,
-                "password": this.inputSignup.password,
-                "imageUrl": this.inputSignup.imageUrl,
-            }
-            console.log(inputDatas)
-            let url = "http://localhost:3000/api/auth/signup"
-            let options = {
-                method: "POST",
-                body: JSON.stringify(inputDatas),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-            console.log(options)
-            fetch(url, options)
-                .then(res => res.json())
-                .then((res) => {
-                    localStorage.setItem("userId", res.userId);
-                    localStorage.setItem("token", res.token);
-                    localStorage.setItem("isAdmin",res.userAdmin)
-                    console.log(localStorage)
-                    this.$router.push("/");
-                    alert("Bienvenue sur Groupomania ! Vous pouvez dès à présent vous connecter !");
-                })
-                .catch(error => console.log(error))
+              this.inputSignup.imageUrl = "http://localhost:3000/images/picture_default.jpg"
+
+              let inputDatas = {
+                  "lastname": this.inputSignup.lastname,
+                  "firstname": this.inputSignup.firstname,
+                  "email": this.inputSignup.email,
+                  "password": this.inputSignup.password,
+                  "imageUrl": this.inputSignup.imageUrl,
+              }
+              console.log(inputDatas)
+              let url = "http://localhost:3000/api/auth/signup"
+              let options = {
+                  method: "POST",
+                  body: JSON.stringify(inputDatas),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              }
+              console.log(options)
+              fetch(url, options)
+                  .then(res => res.json())
+                  .then((res) => {
+                      localStorage.setItem("userId", res.userId);
+                      localStorage.setItem("token", res.token);
+                      localStorage.setItem("isAdmin",res.userAdmin)
+                      console.log(localStorage)
+                      this.$router.push("/");
+                      alert("Bienvenue sur Groupomania ! Vous pouvez dès à présent vous connecter !");
+                  })
+                  .catch(error => console.log(error))
+
+          }
+
+
+
         }
     }
 }

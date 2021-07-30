@@ -149,7 +149,6 @@ export default {
             
             if (this.userAccount.firstname == null || this.userAccount.lastname == null || this.userAccount.firstname.lenght == '0' || this.userAccount.lastname.lenght == '0' || this.userAccount.firstname.trim() == '' || this.userAccount.lastname.trim() == ''){
                 alert("Veuillez saisir votre nom et prénom !")
-                console.log("INFOS COMPTE "+this.inputAccount.firstname+"/"+this.inputAccount.lastname)
             } 
             else
             {         
