@@ -2,60 +2,59 @@
      <section>
 
             <div class="blocsignup">
+                
                 <h2>Gestion du compte de {{ userAccount.firstname }} {{ userAccount.lastname }}</h2>
-                <p>Vous êtes membre depuis le {{userAccount.createdAt}} </p>
 
-            <!--<form v-on:submit.prevent="signup" id="form-signup" >-->
-            <form  id="form-signup" >
+                <form  id="form-signup" >
 
-              <div class="form-group">
-                <label for="lastname">Nom</label>
-                <input type="text" id="lastname" name="lastname" class="form-control" required 
-                pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="this.userAccount.lastname"/>
-              </div>
-              <div class="form-group">
-                <label for="firstname">Prénom</label>
-                <input type="text" id="firstname" name="firstname" class="form-control" required 
-                pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="this.userAccount.firstname"/>
-              </div>
+                    <!--Champ Nom-->
+                    <div class="form-group">
 
-               <div class= "avatar-profile"> 
-                    <img class="avatar-img" :src="this.userAccount.imageUrl" />
-                    <!--<label for="new-avatar-url">Changer de photo de profil <input v-on:change="updateAvatar" id="new-avatar-url" type="file" accept="image/*" /></label>-->
-                    <div class="avatar-modify">
-                        <p>Modifier ma photo de profil </p>
-                        <input v-on:change="updateAvatar" class="change-avatar-url" type="file" accept="image/*" />
+                        <label for="lastname">Nom</label>
+                        <input type="text" id="lastname" name="lastname" class="form-control" required 
+                        pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="this.userAccount.lastname"/>
+
                     </div>
-               </div>
 
-                <!--<div>
-                    <input v-on:change="updateAvatar" class="change-avatar-url" type="file" accept="image/*" />
-                </div> -->  
-                             
-                  <!--<div class="form-group">
-                <label for="userid">Id</label>
-                <input type="text" id="userid" name="userid" class="form-control" required 
-                pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="this.userAccount.userId"/>
-              </div>-->
-              <!--<div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" required 
-                pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" v-model="this.userAccount.email"/>
-              </div>
-              <div class="form-group">
-                <label for="password">Mot de passe (*)</label>
-                <input type="password" id="password" name="password" class="form-control" required
-                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" v-model="this.userAccount.password"/>
-              </div>  -->
-              <button v-on:click="modifyAccount" class="loginsignupbutton" title="Modifier mon compte" aria-label="Enregistrer les modifications de mon compte"> Valider</button>
-                                                    
-            </form>
+                    <!--Champ Prénom-->
+                    <div class="form-group">
 
+                        <label for="firstname">Prénom</label>
+                        <input type="text" id="firstname" name="firstname" class="form-control" required 
+                        pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="this.userAccount.firstname"/>
 
+                    </div>
+
+                    <!--Photo du profil-->
+                    <div class= "avatar-profile"> 
+
+                            <img class="avatar-img" :src="this.userAccount.imageUrl" />
+
+                            <div class="avatar-modify">
+
+                                <p>Modifier ma photo de profil </p>
+
+                                <input v-on:change="updateAvatar" class="change-avatar-url" type="file" accept="image/*" />
+
+                            </div>
+
+                    </div>
+
+                    <!--Bouton de modification du compte-->
+                    <button v-on:click="modifyAccount" class="loginsignupbutton" title="Modifier mon compte" aria-label="Enregistrer les modifications de mon compte"> Valider</button>
+                                                        
+                </form>
+
+                <!--Bouton de suppression du compte-->
                 <button @click="deleteAccount" class="loginsignupbutton" title="Supprimer mon compte"  aria-label="Supprimer mon compte">Supprimer mon compte</button> 
+
+                <!--Bouton de retour-->
                 <button v-on:click="returnToPostList" class="loginsignupbutton" title="Retourner au forum" aria-label="Retourner sur la page des posts"  >Retour</button>   
+            
             </div>  
+     
      </section>
+
 </template>
 
 <script >
@@ -101,12 +100,8 @@ export default {
             .catch(error => console.log(error))
     },
     methods: {
-        /*formatDate(dateString) {
-        const date = new Date(dateString);
-        // Then specify how you want your dates to be formatted
-        return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
-        },*/
 
+        /*Affichage d'un compte utilisateur*/
         getOneAccount() {
             let url = "http://localhost:3000/api/users/"+this.userAccount.userId;
             let options = {
@@ -125,6 +120,8 @@ export default {
                 })
                 .catch(error => console.log(error))
         },
+
+        /*Suppression d'un compte utilisateur*/
         deleteAccount() {
 
             if (confirm("Confirmez-vous la supression du votre compte ? (Tous vos posts et commentaires seront également supprimés)")) {
@@ -146,6 +143,8 @@ export default {
                     .catch(error => console.log(error))
             }
         },
+
+        /*Modification d'un compte utilisateur*/
         modifyAccount() {
             
             if (this.userAccount.firstname == null || this.userAccount.lastname == null || this.userAccount.firstname.lenght == '0' || this.userAccount.lastname.lenght == '0' || this.userAccount.firstname.trim() == '' || this.userAccount.lastname.trim() == ''){
@@ -181,10 +180,12 @@ export default {
 
         },
 
+        /*Routage vers la liste des posts*/
         returnToPostList() {
             this.$router.push("/postlist")
         },
 
+        /*Modification de l'image de l'utilisateur*/
         updateAvatar(event) {
             const formData = new FormData();
             formData.append("image", event.target.files[0]);
@@ -198,7 +199,6 @@ export default {
                 .then(res => res.json())
                 .then(data => {
                     this.userAccount.imageUrl = data;
-                    console.log("FICHIER CHANGE : "+this.userAccount.imageUrl)
                 })
                 .then(() => {
                     window.location.reload()
@@ -212,6 +212,7 @@ export default {
 </script>
 
 <style lang="css">
+
 .accountbutton {
     width: auto;
     margin: 10px 10px 50px 10px;
@@ -222,6 +223,7 @@ export default {
     width: 100px;
     height: 100px;
 }
+
 .change-avatar-url{
     margin-left: auto;
     margin-right: auto; 
@@ -229,13 +231,13 @@ export default {
     background-color: darkseagreen;
     border-radius: 5px;
 }
-.avatar-modify p
-{
+
+.avatar-modify p {
     font-size: 0.9em;
     font-weight: bold;
 }
-.avatar-profile
-{
+
+.avatar-profile {
     border-radius: 5px;
     border: 2px solid;
     width: fit-content;
@@ -246,30 +248,3 @@ export default {
 
 </style>
 
-<!--const storage = JSON.parse(localStorage.getItem('userConnect'));
-        const userId = storage.userId
-        let token = "Bearer " +  storage.token;
-
-        const requestOptions = {
-            method: 'put',
-            headers: { 
-                "Content-type" : 'application/json',
-                'Authorization': token 
-            },
-            body: JSON.stringify(this.state)
-        };
-
-        fetch(('http://localhost:8080/api/users/' + userId), requestOptions)
-                .then(response => response.json())
-                .then((response) => {
-                    if (response.error) { 
-                        alert("Votre compte n'a pas pu être modifié : " + response.error)
-                    } else { 
-                        this.setState({ redirection: true })
-                    }
-                })
-                .catch(error => {
-                    this.setState({ Erreur: error.toString() });
-                    console.error('There was an error!', error);
-            });
-    }-->

@@ -3,21 +3,39 @@
         <div class="blocsignup">
            
             <h2>ESPACE DE CONNEXION AU FORUM GROUPOMANIA </h2>
+
             <img src="../assets/user-lock-solid.svg" alt="Silhouette d'une personne avec un cadena" class="img-logsign" />
+
             <form v-on:submit.prevent="login" id="form-login" >
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" required v-model="inputLogin.email"/>
-              </div>
-              <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" class="form-control" required v-model="inputLogin.password"/>
-              </div>   
-              <button class="loginsignupbutton" type="submit" title="Me connecter" aria-label="Me connecter au forum">Valider</button>                                     
+                
+                <!--Champ Email-->
+                <div class="form-group">
+
+                    <label for="email">Email</label>
+
+                    <input type="email" id="email" name="email" class="form-control" required v-model="inputLogin.email"/>
+
+                </div>
+
+                <!--Champ Password-->
+                <div class="form-group">
+
+                    <label for="password">Mot de passe</label>
+
+                    <input type="password" id="password" name="password" class="form-control" required v-model="inputLogin.password"/>
+
+                </div>   
+
+                <!--Bouton de connexion-->
+                <button class="loginsignupbutton" type="submit" title="Me connecter" aria-label="Me connecter au forum">Valider</button>      
+
             </form> 
-              
-             <nav class="navlogsign"><p>Vous ne possédez pas encore de compte ? <router-link to="/signup">Inscrivez-vous ici !</router-link></p></nav>
+
+            <!--Redirection vers la page d'enregistrement-->  
+            <nav class="navlogsign"><p>Vous ne possédez pas encore de compte ? <router-link to="/signup">Inscrivez-vous ici !</router-link></p></nav>
+
         </div>  
+        
 </template>
 
 
@@ -33,6 +51,8 @@ export default {
         }
     },
     methods: {
+
+        /*Connexion d'un utilisateur*/
         login() {
             let loginDatas = {
                 "email": this.inputLogin.email,
@@ -68,4 +88,5 @@ export default {
 </script>
 
 <style lang="css">
+
 </style>

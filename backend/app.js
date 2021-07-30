@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const path = require('path');
-
 const auth = require('./middleware/auth');
 const result = require('dotenv').config();
 
@@ -15,10 +14,6 @@ const commentRoutes = require('./routes/comment');
 
 /*Déclaration de express*/
 const app = express();
-
-/*app.use(express.json());
-app.use(express.urlencoded({extended: true}));*/
-
 
 /*Gestion du CORS*/
 app.use((req, res, next) => {
@@ -33,19 +28,15 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
-
 const db = require("./models");
 db.sequelize.sync();
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+/*Export des routes*/
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
-
-
 
 module.exports = app;

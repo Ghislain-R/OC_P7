@@ -1,21 +1,34 @@
 <template>
+
      <section>
-          <div class="blocsignup">          
+
+          <div class="blocsignup">   
+
             <h2>MODIFICATION DU MESSAGE</h2>
+
             <form id="form-signup" >
-              <div class="form-group">
-                <label for="content">Message</label>
-                <textarea type="text" id="content" name="content" rows="10" class="form-control" required v-model="this.postData.content"></textarea>
-              </div>
+
+                <!--Champ texte du post-->
+                <div class="form-group">
+
+                    <label for="content">Message</label>
+
+                    <textarea type="text" id="content" name="content" rows="10" class="form-control" required v-model="this.postData.content"></textarea>
+
+                </div>
 
             </form>
             
+            <!--Bouton d'enregistrement du post-->
             <button v-on:click="sendMessage" class="loginsignupbutton" title="Envoyer la modification" alt="Envoyer la modification du post">Modifier</button> 
 
+            <!--Bouton de retour-->
             <button v-on:click="returnToPostList" class="loginsignupbutton" title="Retourner au forum" alt="Retourner sur la page des posts" >Retour</button>
-          </div> 
+
+           </div> 
             
-     </section> 
+     </section>
+
 </template>
 
 <script>
@@ -35,6 +48,7 @@ export default {
             postIdModify: localStorage.getItem("postid") 
         }
     },
+    /*Affichage d'un post*/
     mounted() {
         this.userId = JSON.parse(localStorage.getItem("userId"));
         console.log(this.userId)
@@ -58,6 +72,8 @@ export default {
 
     },
     methods: {
+
+        /*Modification du post*/
         sendMessage() {
             if ((this.postData.content == null) || (this.postData.content.lenght == '0' || this.postData.content.trim() == '' )) {
                 alert("Veuillez saisir un contenu pour la modification du post !")
@@ -67,7 +83,6 @@ export default {
     
             let deliverMessage = {
                 "content": this.postData.content.trim()
-                /*"userId": this.postData.userId*/
             }
  
             let url = "http://localhost:3000/api/posts/"+this.postIdModify
@@ -97,6 +112,8 @@ export default {
 
             }
         },
+
+        /*Routage vers la liste des posts*/
         returnToPostList() {
             localStorage.removeItem("postid");
             this.$router.push("/postlist")
@@ -108,26 +125,29 @@ export default {
 </script>
 
 <style lang="css">
+
 section {
     display: flex;
     margin: auto;
     flex-direction: column;
 }
+
 .parametres {
     margin-top: 0;
     margin-bottom: 25px;
 }
-/*a {
-    cursor: pointer;
-}*/
+
 textarea {
     height: auto;
     resize:none;
 }
+
 @media screen and (max-width: 768px) {
+
 	section {
     flex-direction: column;
     margin-top: 25px;
+    }
 }
-}
+
 </style>

@@ -1,11 +1,18 @@
 <template>
-        <div>    
+
+        <div>  
+
             <!-- Information du user  -->
             <div class="blocuserpostinfos">
+
                 <img class="img-user-post" :src="infos.imageUrl">
+
                 <h3>De {{infos.firstname}} {{infos.lastname}} </h3>  
+
             </div>
+
         </div>
+        
 </template>
 
 
@@ -23,6 +30,8 @@ export default {
     props: {
         postUserId: Number,
     },
+
+    /*Affichage des informations de l'utilisateur*/
     mounted() {
         
         let url = "http://localhost:3000/api/users/"+this.postUserId;
@@ -46,34 +55,45 @@ export default {
 
 <style lang="css">
 
-.blocuserpostinfos
-{
-    /*background-color: hotpink;*/
+.blocuserpostinfos {
     width: auto;
-    display: flex;
+    display: flex;    
 }
-.blocuserpostinfos h3
-{
+
+.blocuserpostinfos h3 {
     color: white;
 }
 
-/*.img-user-post {
-    margin-right: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border: 2px solid;
-    object-fit: cover;
-}*/
-
 .img-user-post {
-  width: 80px;
-  height: 80px;
-  -webkit-border-radius: 120px;
-  -moz-border-radius: 120px;
-  border-radius: 120px;
-  margin: 10px auto 10px auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  margin-right: 20px;
+    width: 80px;
+    height: 80px;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    border-radius: 120px;
+    margin: 10px auto 10px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 930px) {
+
+    .img-user-post {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .img-user-post {
+        width: 30px;
+        height: 30px;
+    }
+
+    .blocuserpostinfos {
+        width: min-content;
+        display: flex;    
+    }
 }
 
 </style>

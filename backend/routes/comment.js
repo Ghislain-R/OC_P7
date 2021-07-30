@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const commentCtrl = require('../controllers/comment');
 
-// Routes
+/*Déclaration des routes de gestion des commentaires*/
 router.get('/:id/display', commentCtrl.findAllComments);
 router.get('/:id', commentCtrl.findOneComment);
 router.post('/', commentCtrl.createComment);

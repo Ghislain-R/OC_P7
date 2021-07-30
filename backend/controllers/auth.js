@@ -1,11 +1,10 @@
-// imports
 const db = require("../models");
 const User = db.users;
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-/*Enregistrement d'un utilisateur*/
+/*Enregistrement d'un nouvel utilisateur*/
 exports.signup = (req, res, next) => {
     
     const firstname = req.body.firstname;
@@ -23,6 +22,7 @@ exports.signup = (req, res, next) => {
     /*Cryptage de l'adresse mail*/
     let buff = new Buffer(email);
     let emailInbase64 = buff.toString('base64');
+
     /*Vérification si le user existe déjà*/
     db.User.findOne({
         attributes: ['email'],
@@ -59,6 +59,7 @@ exports.signup = (req, res, next) => {
 
 /*Connexion d'un utilisateur*/
 exports.login = (req, res, next) => {
+    
     /*Cryptage de l'adresse mail*/
     let buff = new Buffer(req.body.email);
     let emailInbase64 = buff.toString('base64');
@@ -86,7 +87,6 @@ exports.login = (req, res, next) => {
                         isAdmin : user.isAdmin 
                     },
                     process.env.JWT_SECRET,
-                    /*'bWFzdXBlcmNsZXNlY3JldGVwb3VydG9rZW5tYWdpcXVlcXVlcGVyc29ubmVpbHBldXRsYWRldmluZXI=',*/
                     { expiresIn: '1h' }
                 )
             });

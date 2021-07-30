@@ -1,21 +1,33 @@
 <template>
+
      <section>
-          <div class="blocsignup">          
-            <h2>MODIFICATION DU COMMENTAIRE</h2>
-            <form id="form-signup" >
-              <div class="form-group">
-                <label for="content">Commentaire</label>
-                <textarea type="text" id="content" name="content" rows="10" class="form-control" required v-model="this.postData.content"></textarea>
-              </div>
+         
+          <div class="blocsignup"> 
 
-            </form>
-            
-            <button v-on:click="sendMessage" class="loginsignupbutton" title="Envoyer la modification" aria-label="Envoyer la modification du commentaire" >Modifier</button> 
+                <h2>MODIFICATION DU COMMENTAIRE</h2>
 
-            <button v-on:click="returnToPostList" class="loginsignupbutton" title="Retourner au forum" aria-label="Retourner sur la page des posts" >Retour</button>
+                <form id="form-signup" >
+                    
+                    <!--Champ texte commentaire-->
+                    <div class="form-group">
+
+                        <label for="content">Commentaire</label>
+                        
+                        <textarea type="text" id="content" name="content" rows="10" class="form-control" required v-model="this.postData.content"></textarea>
+
+                    </div>
+
+                </form>
+                
+                <!--Bouton de modification du commentaire-->
+                <button v-on:click="sendMessage" class="loginsignupbutton" title="Envoyer la modification" aria-label="Envoyer la modification du commentaire" >Modifier</button> 
+
+                <!--Bouton de retour-->
+                <button v-on:click="returnToPostList" class="loginsignupbutton" title="Retourner au forum" aria-label="Retourner sur la page des posts" >Retour</button>
           </div> 
             
      </section> 
+
 </template>
 
 <script>
@@ -35,6 +47,8 @@ export default {
             CommentIdModify: localStorage.getItem("commentid") 
         }
     },
+
+    /*Affichage d'un commentaire*/
     mounted() {
         this.userId = JSON.parse(localStorage.getItem("userId"));
         console.log(this.userId)
@@ -58,6 +72,8 @@ export default {
 
     },
     methods: {
+
+        /*Modification d'un commentaire*/
         sendMessage() {
             if ((this.postData.content == null) || (this.postData.content.lenght == '0' || this.postData.content.trim() == '' )){
                 alert("Veuillez saisir un contenu pour la modification du commentaire !")
@@ -67,7 +83,6 @@ export default {
     
             let deliverMessage = {
                 "content": this.postData.content.trim()
-                /*"userId": this.postData.userId*/
             }
  
             let url = "http://localhost:3000/api/comments/"+this.CommentIdModify
@@ -98,6 +113,7 @@ export default {
             }
         },
 
+        /*Routage vers la liste des posts*/
         returnToPostList() {
             localStorage.removeItem("commentid");
             this.$router.push("/postlist")
@@ -109,26 +125,29 @@ export default {
 </script>
 
 <style lang="css">
+
 section {
     display: flex;
     margin: auto;
     flex-direction: column;
 }
+
 .parametres {
     margin-top: 0;
     margin-bottom: 25px;
 }
-/*a {
-    cursor: pointer;
-}*/
+
 textarea {
     height: auto;
     resize:none;
 }
+
 @media screen and (max-width: 768px) {
-	section {
-    flex-direction: column;
-    margin-top: 25px;
+	
+    section {
+        flex-direction: column;
+        margin-top: 25px;
+    }
 }
-}
+
 </style>

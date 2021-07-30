@@ -18,7 +18,7 @@
                     <div>
                         <p>Le {{formatDate(comment.createdAt)}}</p>  
                                                               
-                        <p class="answercontent">{{ comment.content }}  <!--{{comment.userId}} {{this.userId}}--></p>    
+                        <p class="answercontent">{{ comment.content }} </p>    
                     </div> 
                 </div>
 
@@ -52,14 +52,14 @@ export default {
             comment: "",
             comments: [],
             userId: ""
-        };
-        
-        
+        };                
     },
+
     props: {
         postId: Number,
         postUserId: Number,
     },
+
     mounted() {
         this.userId = JSON.parse(localStorage.getItem("userId"));
         this.isAdmin = JSON.parse(localStorage.getItem("isAdmin"));
@@ -81,14 +81,16 @@ export default {
             })
             .catch(error => console.log(error))
     },
+
     methods: {
-        
-       formatDate(dateString) {
+
+        /*Formatage de la date/heure*/
+        formatDate(dateString) {
         const date = new Date(dateString);
-        // Then specify how you want your dates to be formatted
         return new Intl.DateTimeFormat('default', {dateStyle: 'full',timeStyle: 'short'}).format(date);
         },
         
+        /*Création d'un commentaire*/
         createComment() {
 
             if ((this.content == null) || (this.content.lenght == 0 || this.content.trim() == ''))  {
@@ -102,13 +104,7 @@ export default {
                 "userId": this.userId,
                 "content": this.content.trim()     
             }
-            
-            /*if ((inputContent.content == null) || (inputContent.content.lenght == 0 || inputContent.content.trim() == ''))  {
-               alert("Veuillez saisirun contenu pour votre commentaire")     
-            }
-            else
-            {  */ 
-      
+                  
                 let url = "http://localhost:3000/api/comments/"
                 let options = {
                     method: "POST",
@@ -135,7 +131,7 @@ export default {
                     
         },
 
-        ///////////////////DELETE MESSAGE/////////////////////
+        /*Suppression d'un commentaire*/
         deleteComment(commentid) {
 
             if (confirm("Confirmez-vous la supression du commentaire ?")) {               
@@ -175,98 +171,87 @@ export default {
     font-size: 0.83em;
 }
 
-/*.actionbutton {
-  border-style: none;
-  border-radius: 5px;
-  background-color: #FF79DA;
-  text-decoration: none;
-  padding: 12px;
-  margin: 0 auto;
-  background: linear-gradient(180deg, rgb(255, 63, 63), #d44c5c);  
-  color: white;
-  font-size: medium;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  box-shadow: 0px 0 5px 1px #e0e0e0;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.actionbutton:hover {
-  color: black;
-  font-weight: bold;
-  background: rgb(253, 153, 153);
-}*/
-
-.actioncommentbutton{
-  border-style: none;
-  border-radius: 5px;
-  background-color: #FF79DA;
-  text-decoration: none;
-  padding: 12px;
-  margin: 0 auto;
-  background: linear-gradient(180deg, rgb(255, 63, 63), #d44c5c);
-  color: white;
-  font-size: medium;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  box-shadow: 0px 0 5px 1px #e0e0e0;
-  margin-top: 10px;
-  cursor: pointer;
+.actioncommentbutton {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #FF79DA;
+    text-decoration: none;
+    padding: 12px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgb(255, 63, 63), #d44c5c);
+    color: white;
+    font-size: medium;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 0px 0 5px 1px #e0e0e0;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .actioncommentbutton:hover{
-  color: black;
-  font-weight: bold;
-  background: rgb(253, 153, 153);
+    color: black;
+    font-weight: bold;
+    background: rgb(253, 153, 153);
 }
 
 h4 {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
+
 .blocanswer {
-  width: 100%;
-  margin: 0;
-  /*border-radius: 30px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
+
 .blocanswer a {
-  width: 10%;
+    width: 10%;
 }
+
 .blocanswers {
-  text-align: center;
-  width: 90%;
-  margin: auto;
-  margin-top: 10px;
-  border-radius: 5px; 
-  border: 1px solid grey;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 5px; 
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
+
 .blocanswers i {
-  color: #0c2444;
+    color: #0c2444;
 }
-/*.blocanswers p {
-  font-size: 0.7em;
-}*/
+
 .blocanswer i {
-  color: white;
-  font-size: 1.75em;
-  padding-right: 25px;
-  text-shadow: -3px 0 3px #d44c5c, 0 3px 3px  #d44c5c, 3px 0 3px  #d44c5c, 0 -3px 15px  #d44c5c;
+    color: white;
+    font-size: 1.75em;
+    padding-right: 25px;
+    text-shadow: -3px 0 3px #d44c5c, 0 3px 3px  #d44c5c, 3px 0 3px  #d44c5c, 0 -3px 15px  #d44c5c;
 }
+
 .blocanswer textarea:focus {
-  border-color: white;
-  box-shadow: 0px 0px 20px grey;
+    border-color: white;
+    box-shadow: 0px 0px 20px grey;
 }
+
 .blocactionscomment{
     background-color: yellow;
+}
+
+@media screen and (max-width: 760px) {
+
+    .answercontent{
+        font-size: 0.3em;   
+    }
+    .blocanswers p {
+        font-size: 0.6em;
+    }
 }
 </style>

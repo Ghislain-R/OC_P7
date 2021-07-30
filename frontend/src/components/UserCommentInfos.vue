@@ -1,10 +1,16 @@
 <template>
-        <div>    
-            <!-- Information du user  -->
+
+        <div>   
+
+            <!-- Informations du user  -->
             <div class="blocusercommentinfos">
-                <h3>{{infos.firstname}} {{infos.lastname}}</h3>  
+
+                <h3>{{infos.firstname}} {{infos.lastname}}</h3> 
+
             </div>
+
         </div>
+        
 </template>
 
 
@@ -21,6 +27,8 @@ export default {
     props: {
         commentUserId: Number,
     },
+
+    /*Affichage des informations de l'utilisateur*/
     mounted() {
         
         let url = "http://localhost:3000/api/users/"+this.commentUserId;
@@ -48,11 +56,18 @@ export default {
 .blocusercommentinfos{
     text-align: center;
     font-size: 0.7em;
-    /*background-color: rgb(255, 176, 176);*/
     background-color: gainsboro;
     width: 30%;
     margin: auto;
     height: 5%;
+}
+
+@media screen and (max-width: 768px) {
+
+    .blocusercommentinfos{
+        font-size: 0.5em;
+        margin-top: 10px;
+    }
 }
 
 </style>

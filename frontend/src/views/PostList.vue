@@ -1,17 +1,23 @@
 <template>
+
      <section>
                 
           <div class="bloctitle">
 
-			<h1>BIENVENUE SUR LE FORUM DE DISCUSSION DE GROUPOMANIA</h1> 
-            <p>{{this.userAccount.firstname+"  "+this.userAccount.lastname}}</p>
+                <h1>BIENVENUE SUR LE FORUM DE DISCUSSION DE GROUPOMANIA</h1> 
+                
+                <p>{{this.userAccount.firstname+"  "+this.userAccount.lastname}}</p>
 
           </div> 
 
+          <!--Composant barre de navigation-->  
           <Navigation></Navigation>
 
+          <!--Composant d'affichage de la liste des posts-->  
           <ListOfPosts/>
+
      </section> 
+
 </template>
 
 
@@ -39,11 +45,14 @@ export default {
         }
         
     },
+
+    /*Rechargement de la page*/
     beforemount(){
         window.location.reload()
     },
-    mounted() {
 
+    /*Affichage des information de l'utilisateur*/
+    mounted() {
 
         let url = "http://localhost:3000/api/users/"+this.userAccount.userId;
         let options = {
@@ -70,47 +79,50 @@ export default {
 <style lang="css">
 
 .bloctitle {
-  color: black;
-  margin: auto;
-  width: 60%; 
-  opacity: 0.95;
-  padding-top: 20px;
-  box-shadow: inset 0px 0px 0px 6px white;
-  border-radius: 10px;
-  text-align: center;
-  margin-top: 20px;
-  background-color: rgb(232, 248, 232);
-  align-items: center;
-  padding-bottom: 20px;
-  border: 1px solid;
+    color: black;
+    margin: auto;
+    width: 60%; 
+    opacity: 0.95;
+    padding-top: 20px;
+    box-shadow: inset 0px 0px 0px 6px white;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    background-color: rgb(232, 248, 232);
+    align-items: center;
+    padding-bottom: 20px;
+    border: 1px solid;
 }
 
 .bloctitle h1 {
-  /*font-weight: ; background-color: rgb(75, 128, 128);
-   padding-top:5px;
-   padding-bottom: 5px;
-   color: white;
-   font-weight: 500;*/
-   font-size: 1.6em;
+    font-size: 1.6em;
 }
 
 @media screen and (max-width: 1270px) {
+
   .bloctitle {
       width: 80%; 
   }
+
 }
+
 @media screen and (max-width: 930px) {
+
   .bloctitle h1 {
       font-size: 1.2em; 
   }
     .bloctitle p {
       font-size: 0.9em; 
   }
+
 }
+
 @media screen and (max-width: 768px) {
+
   .bloctitle {
       width: 90%; 
   }
+  
 }
 
 
