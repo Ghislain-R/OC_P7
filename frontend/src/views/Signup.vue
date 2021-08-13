@@ -2,54 +2,54 @@
      
           <div class="blocsignup">
 
-            <h2>FORMULAIRE D'INSCRIPTION</h2>
+              <h2>FORMULAIRE D'INSCRIPTION</h2>
 
-            <img src="../assets/user-plus-solid.svg" alt="Silhouette d'une personne avec le signe plus" class="img-logsign" />
+              <img src="../assets/user-plus-solid.svg" alt="Silhouette d'une personne avec le signe plus" class="img-logsign" />
             
-            <form v-on:submit.prevent="signup" id="form-signup" >
+              <form v-on:submit.prevent="signup" id="form-signup" >
 
-              <!--Champ Nom-->
-              <div class="form-group">
+                <!--Champ Nom-->
+                <div class="form-group">
 
-                <label for="lastname">Nom</label>
-                <input type="text" id="lastname" name="lastname" class="form-control" required 
-                pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.lastname"/>
+                  <label for="lastname">Nom</label>
+                  <input type="text" id="lastname" name="lastname" class="form-control" required 
+                  pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.lastname"/>
 
-              </div>
+                </div>
 
-              <!--Champ Prénom-->
-              <div class="form-group">
+                <!--Champ Prénom-->
+                <div class="form-group">
 
-                <label for="firstname">Prénom</label>
-                <input type="text" id="firstname" name="firstname" class="form-control" required 
-                pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.firstname"/>
+                  <label for="firstname">Prénom</label>
+                  <input type="text" id="firstname" name="firstname" class="form-control" required 
+                  pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.firstname"/>
 
-              </div>
+                </div>
 
-              <!--Champ Email-->
-              <div class="form-group">
+                <!--Champ Email-->
+                <div class="form-group">
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" required 
-                pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" v-model="inputSignup.email"/>
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" class="form-control" required 
+                  pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" v-model="inputSignup.email"/>
 
-              </div>
+                </div>
 
-              <!--Champ Password-->
-              <div class="form-group">
+                <!--Champ Password-->
+                <div class="form-group">
 
-                <label for="password">Mot de passe (*)</label>
-                <input type="password" id="password" name="password" class="form-control" required
-                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" v-model="inputSignup.password"/>
+                  <label for="password">Mot de passe (*)</label>
+                  <input type="password" id="password" name="password" class="form-control" required
+                  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" v-model="inputSignup.password"/>
 
-              </div>  
+                </div>  
 
-              <p>(*) Votre mot de passe doit contenir 8 caractères minimum dont 1 majuscule, 1 minuscule et un chiffre</p>
+                <p>(*) Votre mot de passe doit contenir 8 caractères minimum dont 1 majuscule, 1 minuscule et un chiffre</p>
 
-              <!--Bouton d'enregistrement-->
-              <button class="loginsignupbutton" title="Créer mon compte" aria-label="Créer mon compte">Valider</button>
+                <!--Bouton d'enregistrement-->
+                <button class="loginsignupbutton" title="Créer mon compte" aria-label="Créer mon compte">Valider</button>
                                                     
-            </form> 
+              </form> 
              
               <!--Redirection vers la page de connexion-->  
               <nav class="navlogsign"><p>Vous avez déjà un compte ? <router-link to="/">Connectez-vous</router-link></p></nav>
@@ -77,7 +77,8 @@ export default {
 
       /*Enregistrement d'un nouvel utilisateur*/
         signup() {
-            
+
+          /*Contrôle des valeurs saisies en entrée*/  
           if (this.inputSignup.firstname == null || this.inputSignup.lastname == null || this.inputSignup.email == null || this.inputSignup.password == null || 
           this.inputSignup.firstname.lenght == '0' || this.inputSignup.lastname.lenght == '0' || this.inputSignup.email.lenght == '0' || this.inputSignup.password.lenght == '0' ||
           this.inputSignup.firstname.trim() == '' || this.inputSignup.lastname.trim() == '' || this.inputSignup.email.trim() == '' || this.inputSignup.password.trim() == '')
@@ -264,7 +265,6 @@ input:focus, textarea:focus {
   .blocsignup {
     width: 90%; 
     box-shadow: inset 0px 0px 0px 8px white;
-    border: 5px solid #d44c5c;
     font-size: 0.7em;
   }
 

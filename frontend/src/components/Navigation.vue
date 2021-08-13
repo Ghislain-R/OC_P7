@@ -4,11 +4,11 @@
 
             <div class="links">
 
-                <router-link to="/post" title="Poster un message" class="routerlink"><img src="../assets/comment-dots-regular.svg" class= "navbar-img" alt="Crayon" ><div class="button-text">Poster un message</div></router-link>
+                <router-link to="/post" title="Poster un message" class="routerlink" ><img src="../assets/comment-dots-regular.svg" class= "navbar-img" alt="Crayon" ><div class="button-text">Poster un message</div></router-link>
 
-                <router-link to="/account" title="Mon compte" class="routerlink"><img src="../assets/user-alt-solid.svg" class= "navbar-img" alt="Silhouette d'une personne"><div class="button-text">Mon compte</div></router-link>
+                <router-link to="/account" title="Mon compte" class="routerlink" ><img src="../assets/user-alt-solid.svg" class= "navbar-img" alt="Silhouette d'une personne"><div class="button-text">Mon compte</div></router-link>
                 
-                <router-link to="/" title="Se deconnecter" class="routerlink"><img @click="deconnect" src="../assets/sign-out-alt-solid.svg" class= "navbar-img" alt="Flèche vers la droite"><div class="button-text">Déconnexion</div></router-link>           
+                <router-link to="/" title="Se deconnecter" class="routerlink" ><img @click="deconnect" src="../assets/sign-out-alt-solid.svg" class= "navbar-img" alt="Flèche vers la droite"><div class="button-text">Déconnexion</div></router-link>           
             
             </div>
 

@@ -1,3 +1,4 @@
+/*Imports*/
 const models = require("../models");
 const Comment = models.comments;
 

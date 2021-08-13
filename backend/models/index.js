@@ -1,3 +1,4 @@
+/*Configuration de la connexion à la base de données*/
 'use strict';
 
 const fs = require('fs');

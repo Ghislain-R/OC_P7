@@ -35,9 +35,9 @@ const routes = [
     component: PostUpdate,
   },
   {
-  path: '/commentupdate',
-  name: 'CommentUpdate',
-  component: CommentUpdate,
+    path: '/commentupdate',
+    name: 'CommentUpdate',
+    component: CommentUpdate,
   },
   {
     path: '/account',

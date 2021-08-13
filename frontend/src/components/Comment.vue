@@ -121,7 +121,7 @@ export default {
                         if (res.ok) {
                             this.content = {}
                         } else {
-                            alert("Commentaire envoyé 🖅");
+                            alert("Votre commentaire est en ligne !");
                         }
                     })
                     .then(window.location.reload())

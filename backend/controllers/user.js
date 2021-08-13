@@ -1,4 +1,4 @@
-// imports
+/*Imports*/
 const models = require('../models');
 const User = models.users;
 const Post = models.posts;
