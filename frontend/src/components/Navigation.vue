@@ -31,8 +31,7 @@ export default {
 
 <style lang="css">
 
-#navbar 
-{
+#navbar {
     text-align: center;
     align-self: center;
     width: 30%;  
@@ -62,7 +61,7 @@ export default {
     height: 50px;
 }
 
-.button-text{
+.button-text {
     text-decoration: underline none;    
 }
 
@@ -74,6 +73,7 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+    
 	#navbar {
         height: auto;
         width: 70%;

@@ -195,10 +195,6 @@ export default {
     background: rgb(253, 153, 153);
 }
 
-h4 {
-    text-transform: uppercase;
-}
-
 .blocanswer {
     width: 100%;
     margin: 0;
@@ -250,8 +246,28 @@ h4 {
     .answercontent{
         font-size: 0.3em;   
     }
+
     .blocanswers p {
         font-size: 0.6em;
     }
+
+    .actioncommentbutton {
+        border-style: none;
+        border-radius: 5px;
+        background-color: #FF79DA;
+        text-decoration: none;
+        padding: 8px;
+        margin: 0 auto;
+        background: linear-gradient(180deg, rgb(255, 63, 63), #d44c5c);
+        color: white;
+        font-size: medium;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        box-shadow: 0px 0 5px 1px #e0e0e0;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
 }
 </style>

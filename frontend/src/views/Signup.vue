@@ -236,6 +236,7 @@ input:focus, textarea:focus {
   .blocsignup {
       width: 90%; 
   }
+  
 }
 
 @media screen and (max-width: 690px) {
@@ -275,7 +276,7 @@ input:focus, textarea:focus {
 
   label, input, textarea {
     width: 75%;
-    text-align: center;
+    text-align: center;  
   }
   
 }

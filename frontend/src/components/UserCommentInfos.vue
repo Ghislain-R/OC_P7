@@ -53,7 +53,7 @@ export default {
 
 <style lang="css">
 
-.blocusercommentinfos{
+.blocusercommentinfos {
     text-align: center;
     font-size: 0.7em;
     background-color: gainsboro;
@@ -62,11 +62,19 @@ export default {
     height: 5%;
 }
 
+@media screen and (max-width: 930px) {
+
+    .blocusercommentinfos {
+        width: 60%;
+    }
+}    
+
 @media screen and (max-width: 768px) {
 
-    .blocusercommentinfos{
+    .blocusercommentinfos {
         font-size: 0.5em;
         margin-top: 10px;
+        width: 60%;
     }
 }
 

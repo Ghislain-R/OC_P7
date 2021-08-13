@@ -22,7 +22,7 @@
 
           <div class="blocmessage">
 
-              <h5 class="pmessage"> {{ message.content }} </h5>
+              <h4 class="pmessage"> {{ message.content }} </h4>
 
           </div>
 
@@ -167,9 +167,7 @@ export default {
 
 <style lang="css">
 
-
-.blocnomessage
-{
+.blocnomessage {
     width: 50%;
     margin-top: 100px;
     margin-left: auto;
@@ -190,7 +188,7 @@ export default {
     align-items: center;
 }
 
-.imginfolikes{
+.imginfolikes {
     width: 25px;
     height: 25px;
     margin-left: 10px;
@@ -232,9 +230,8 @@ export default {
 }
 
 h4 {
-    text-transform: uppercase;
-    font-size: 1.25em;
-    text-decoration: underline;   
+
+    font-size: 0.87em;  
 }
 
 .blocjob {
@@ -294,23 +291,27 @@ h5 i, h4 i {
 }
 
 @media screen and (max-width: 1270px) {
-	.bloclist {
+
+  .bloclist {
       width: 90%; 
   }
 
   .blocauthor h3 {
       font-size: 0.9em;
   }
-.blocauthor p {
+
+  .blocauthor p {
       font-size: 0.8em;
   }
 
 }
+
 @media screen and (max-width: 760px) {
 
   .blocauthor h3 {
       font-size: 0.6em;
   }
+
   .blocauthor p {
       font-size: 0.6em;
   }
@@ -321,19 +322,43 @@ h5 i, h4 i {
       margin-left: 10px;
   }
 
- .blocnomessage p {
+  .blocnomessage p {
       font-size: 1em;
   }  
   
-  h5 {
+  h4 {
       font-size: 0.7em;
   }
+
+  textarea {
+      font-size: 0.65em;
+  }
+
+  .actionbutton {
+    border-style: none;
+    border-radius: 5px;
+    background-color: #FF79DA;
+    text-decoration: none;
+    padding: 7px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgb(255, 63, 63), #d44c5c);
+    color: white;
+    font-size: medium;
+    width: 30px;
+    height:30px;
+    text-align: center;
+    box-shadow: 0px 0 5px 1px #e0e0e0;
+    margin-top: 10px;
+    vertical-align: middle;
+    margin-left: 5px;
+    cursor: pointer;
+}
 
 }
 
 @media screen and (max-width: 450px) {
 
-	.bloclist {
+  .bloclist {
       width: 90%; 
       font-size: 0.3em;
   }
@@ -353,4 +378,5 @@ h5 i, h4 i {
   }
 
 }
+
 </style>

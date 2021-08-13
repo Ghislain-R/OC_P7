@@ -217,13 +217,12 @@ export default {
     margin: 10px 10px 50px 10px;
 }
 
-.avatar-img
-{
+.avatar-img {
     width: 100px;
     height: 100px;
 }
 
-.change-avatar-url{
+.change-avatar-url {
     margin-left: auto;
     margin-right: auto; 
     width: auto;

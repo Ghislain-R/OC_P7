@@ -147,7 +147,7 @@ textarea {
     section {
         flex-direction: column;
         margin-top: 25px;
-    }
+    }    
 }
 
 </style>

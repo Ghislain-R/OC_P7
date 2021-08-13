@@ -29,6 +29,7 @@ body, html {
   padding: 0;
   height: 100%; 
 }
+
 #app {
   height: 100%;
   font-family: 'Roboto', sans-serif;
@@ -48,7 +49,7 @@ header {
   flex-direction: row;
 }
 
-header a{
+header a {
   text-decoration: none;
   color: white;
   margin: auto;
@@ -66,6 +67,7 @@ header img {
   }
 
 }
+
 @media screen and (max-width: 768px) {
 
   header img {
@@ -73,6 +75,7 @@ header img {
   }
 
 }
+
 @media screen and (max-width: 600px) {
 
   header img {

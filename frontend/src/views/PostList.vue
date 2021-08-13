@@ -111,6 +111,7 @@ export default {
   .bloctitle h1 {
       font-size: 1.2em; 
   }
+  
     .bloctitle p {
       font-size: 0.9em; 
   }
